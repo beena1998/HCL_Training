@@ -1,14 +1,20 @@
 package com.service;
 
 public class MembershipCard extends Card {
-private int rating;
 
-public int getRating() {
-	return rating;
-}
+	public MembershipCard(String holderName, String cardNumber, String expiryDate) {
+		super(holderName, cardNumber, expiryDate);
 
-public void setRating(int rating) {
-	this.rating = rating;
-}
+	}
+
+	private int rating;
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 
 }

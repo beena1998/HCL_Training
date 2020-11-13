@@ -3,6 +3,11 @@ package main;
 import service.Calculate;
 import java.util.Scanner;
 
+/*Write a Java program to print the sum (addition), multiply, subtract, divide and remainder of two numbers. 
+ * 
+ * @ Beena Kandpal
+ * 
+ * */ 
 public class CalculateMain {
 
 	public static void main(String[] args) {
