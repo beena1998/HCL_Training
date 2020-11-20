@@ -16,19 +16,23 @@ public class EmplyeeNameDesignationMain {
 
 		LinkedHashMap<String, String> employeeDetail = new LinkedHashMap<String, String>();
 		for (int i = 0; i < noEmployee; i++) {
-			String name = scan.nextLine();
-			String designation = scan.nextLine();
+			System.out.println("Enter name of employee "+i+1);
+			String name = scan.next();
+			
+			System.out.println("Enterdesignation of employee "+i+1);
+			String designation = scan.next();
 			employeeDetail.put(name, designation);
 		}
-
-		String searchDesignation = scan.nextLine();
+		System.out.println("Enter the designation you want to search : ");
+		String searchDesignation = scan.next();
 		LinkedHashMap<String, String> findEemployeeDesignation = new LinkedHashMap<String, String>();
 		EmployeeNameDesignation employeeNameDesignation= new EmployeeNameDesignation();
-		findEemployeeDesignation = EmployeeNameDesignation.findEmployee(employeeDetail, searchDesignation);
+		findEemployeeDesignation = employeeNameDesignation.findEmployee(employeeDetail, searchDesignation);
 		Iterator<String> it = findEemployeeDesignation.keySet().iterator();
 
 		while (it.hasNext()) {
 			String s2 = it.next();
+			System.out.println("HI");
 			System.out.println(s2);
 
 		}
