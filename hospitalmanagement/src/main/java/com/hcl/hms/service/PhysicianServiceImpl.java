@@ -28,4 +28,25 @@ public class PhysicianServiceImpl implements PhysicianService {
 		return physicianDao.getByState(state);
 	}
 
+	@Override
+	@Transactional
+	public List<Physician> getByPlan(String plan) {
+		
+		return physicianDao.getByPlan(plan);
+	}
+
+	@Override
+	@Transactional
+	public List<Physician> getByDept(String dept) {
+	
+		return physicianDao.getByDept(dept);
+	}
+
+	@Override
+	@Transactional
+	public List<Physician> listPhysician(Physician physician) {
+		
+		return physicianDao.listPhysician(physician);
+	}
+
 }

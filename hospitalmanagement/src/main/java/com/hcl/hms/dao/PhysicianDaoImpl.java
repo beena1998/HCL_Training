@@ -28,13 +28,54 @@ public class PhysicianDaoImpl implements PhysicianDao {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("From Physician p where p.state=:state");
 		query.setParameter("state", state);
-		List<Physician> results =  ((org.hibernate.query.Query) query).list();
-		
-		for(Physician p : results){
-			System.out.println("Physician List::"+p);
+		List<Physician> results = ((org.hibernate.query.Query) query).list();
+
+		for (Physician p : results) {
+			System.out.println("Physician List::" + p);
 		}
 
 		return results;
 	}
 
+	@Override
+	public List<Physician> getByPlan(String plan) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("From Physician p where p.insurancePlan=:plan");
+		query.setParameter("plan", plan);
+		List<Physician> results = ((org.hibernate.query.Query) query).list();
+
+		for (Physician p : results) {
+			System.out.println("Physician List::" + p);
+		}
+
+		return results;
+	}
+
+	@Override
+	public List<Physician> getByDept(String dept) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("From Physician p where p.department=:dept");
+		query.setParameter("dept", dept);
+		List<Physician> results = ((org.hibernate.query.Query) query).list();
+
+		for (Physician p : results) {
+			System.out.println("Physician List::" + p);
+		}
+
+		return results;
+	}
+
+	@Override
+	public List<Physician> listPhysician(Physician physician) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("From Physician");
+		List<Physician> results = ((org.hibernate.query.Query) query).list();
+
+		for (Physician p : results) {
+			System.out.println("Physician List::" + p);
+			System.out.println(p.getId());
+		}
+
+		return results;
+	}
 }

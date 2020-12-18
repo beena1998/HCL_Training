@@ -20,20 +20,20 @@ public class Physician implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int primaryKey;
 	
-	@Column(name="Id")
+	@Column(name="Id", unique = true)
 	@NotEmpty(message="Please enter ID using first two characters of Physician Id should be PR followed by a three digit")
-	private String Id;
+	private String id;
 	
 	@NotEmpty(message="Please enter First name")
-	@Size(max=20)
+	@Size(min=3,max=20, message="First name should be between 3 and 20 characters")
 	private String firstName;
 	
 	@NotEmpty(message="Please enter Last name")
-	@Size(max=20)
+	@Size(min=1,max=20)
 	private String lastName;
 	
 	@NotEmpty(message="Please enter Department")
-	@Size(max=20)
+	@Size(min=3,max=20)
 	private String department;
 	
 	@NotEmpty(message="Please enter EducationQualification")
@@ -42,19 +42,14 @@ public class Physician implements Serializable{
 	@NotNull(message="Please enter Years of Experience")
 	private int YOE;
 	
-	@Override
-	public String toString() {
-		return "Physician [primaryKey=" + primaryKey + ", Id=" + Id + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", department=" + department + ", eduQul=" + eduQul + ", YOE=" + YOE + ", state=" + state
-				+ ", insurancePlan=" + insurancePlan + "]";
-	}
+	
 
 	@NotEmpty(message="Please enter State")
-	@Size(max=10)
+	@Size(min=2,max=10)
 	private String state;
 	
 	@NotEmpty(message="Please enter Insurance Plan")
-	@Size(max=40)
+	@Size(min=1,max=40)
 	private String insurancePlan;
 
 	public Physician() {
@@ -70,12 +65,14 @@ public class Physician implements Serializable{
 		this.primaryKey = primaryKey;
 	}
 
+	
+
 	public String getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(String id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -134,6 +131,11 @@ public class Physician implements Serializable{
 		this.insurancePlan = insurancePlan;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Physician [primaryKey=" + primaryKey + ", Id=" + id + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", department=" + department + ", eduQul=" + eduQul + ", YOE=" + YOE + ", state=" + state
+				+ ", insurancePlan=" + insurancePlan + "]";
+	}
 
 }

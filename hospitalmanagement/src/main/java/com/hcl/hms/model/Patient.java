@@ -11,37 +11,38 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "patient_details")
-public class Patient implements Serializable{
+public class Patient implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int ID;
+	private int id;
 
 	@Column(name = "fname")
 	@Size(min = 1, max = 10)
-	@NotNull(message = "Please enter your First Name")
+	@NotEmpty(message = "Please enter your First Name")
 	private String firstName;
 
-	@Size(max = 10)
 	@Column(name = "lname")
-	@NotNull(message = "Please enter your Last Name")
+	@Size(min=1,max = 10)
+	@NotEmpty(message = "Please enter your Last Name")
 	private String lastName;
 
 	@Column(name = "pwd")
 	@Size(min = 5, max = 10)
-	@NotNull(message = "Please enter your Password")
+	@NotEmpty(message = "Please enter your Password")
 	private String password;
 
 	@Column(name = "dob")
-	@NotNull(message = "Please enter your DOB")
-	private String DOB;
+	@NotEmpty(message = "Please enter your DOB")
+	private String dob;
 
 	@Column(name = "email", unique = true, nullable = false, length = 50)
-	@NotNull
+	@Email(message="Please enter your email ID")
 	private String email;
 
 	@Column(name = "number")
@@ -49,11 +50,11 @@ public class Patient implements Serializable{
 	private Long number;
 
 	@Column(name = "state")
-	@NotNull(message = "Please enter your State")
+	@NotEmpty(message = "Please enter your State")
 	private String state;
 
 	@Column(name = "insurance_plan")
-	@NotNull(message = "Please enter your Insurance Plan")
+	@NotEmpty(message = "Please enter your Insurance Plan")
 	private String insurancePlan;
 
 	public Patient() {
@@ -61,13 +62,16 @@ public class Patient implements Serializable{
 
 	}
 
-	public int getID() {
-		return ID;
+	
+	public int getId() {
+		return id;
 	}
 
-	public void setID(int iD) {
-		ID = iD;
+
+	public void setId(int id) {
+		this.id = id;
 	}
+
 
 	public String getFirstName() {
 		return firstName;
@@ -93,13 +97,17 @@ public class Patient implements Serializable{
 		this.password = password;
 	}
 
-	public String getDOB() {
-		return DOB;
+
+
+	public String getDob() {
+		return dob;
 	}
 
-	public void setDOB(String dOB) {
-		DOB = dOB;
+
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
+
 
 	public String getEmail() {
 		return email;

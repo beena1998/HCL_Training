@@ -9,15 +9,16 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hcl.hms.model.Patient;
 import com.hcl.hms.model.Physician;
 import com.hcl.hms.service.PhysicianService;
-import com.hcl.hms.service.PhysicianServiceImpl;
+
 
 @Controller
 public class PhysicianController {
@@ -34,11 +35,15 @@ public class PhysicianController {
 	}
 	
 	@PostMapping(value="physicianadded")
-	public String addPhysican(@Valid Model model, Physician physician ) {
+	public String addPhysican(@Valid @ModelAttribute("physician") Physician physician,BindingResult bindingResult,Model model ) {
+		if(bindingResult.hasErrors()) {
+			return "addPhysician";
+		}
 		physician = physicianService.addPhysician(physician) ;
 
 		if (physician != null) {
 			model.addAttribute("physician", physician);
+			model.addAttribute("succcessMessage", "Physician succcessfully added!!");
 			return "success";
 		} else {
 			String errMessage = "Physician Not Enrolled";
@@ -69,6 +74,23 @@ public class PhysicianController {
 	}
 	
 	
+	@RequestMapping(value="/searchPhysicianByPlan")
+	public String searchPhysicianByPlan(@RequestParam("plan") String plan,  Model model,HttpServletRequest request, HttpServletResponse response) {
+		
+		List<Physician> phy=physicianService.getByPlan(plan);
+		model.addAttribute("physician", phy);
+		
+		return "searchPhysician";
+	}
+	
+	@RequestMapping(value="/searchPhysicianByDepartment")
+	public String searchPhysicianByDept(@RequestParam("dept") String dept,  Model model,HttpServletRequest request, HttpServletResponse response) {
+		
+		List<Physician> phy=physicianService.getByDept(dept);
+		model.addAttribute("physician", phy);
+		
+		return "searchPhysician";
+	}
 	
 	
 
