@@ -19,8 +19,6 @@ public class PatientServiceImpl implements PatientService {
 	@Transactional
 	public Patient enrollPatient(Patient patient) {
 
-		System.out.println("In Service Layer!!");
-		System.out.println(patient.getFirstName());
 		return patientDao.enrollPatient(patient);
 	}
 
@@ -41,8 +39,15 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 	@Transactional
 	public Patient getPatientById(int id) {
-		
+
 		return patientDao.getPatientById(id);
+	}
+
+	@Override
+	@Transactional
+	public Patient getPatient(String email, String password) {
+
+		return patientDao.getPatient(email, password);
 	}
 
 }

@@ -7,13 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-Inside Index:
-<a href="enroll">Enroll Patient</a><br>
-<br><br>
-<a href="addPhysician">Add Physician</a>
-<br><br>
-<a href="patientLogin">Patient Login</a>
-<br><br>
-<a href="adminLogin">Admin Login</a>
+${error}
+<br> 
+	<form action="afterPatientLogin" method="post">
+		Enter email<input type="text" name="email" >
+		Enter password<input type="password" name="password">
+		<button type="submit" >Login</button>
+	</form>
+
+
 </body>
 </html>

@@ -12,7 +12,7 @@ public class DiagnosisDaoImpl implements DiagnosisDao {
 	private SessionFactory sessionFactory;
 	@Override
 	public DiagnosisDetails addDetails(DiagnosisDetails details) {
-		System.out.println("In Dao");
+		
 		Session session = sessionFactory.getCurrentSession();
 		session.save(details);
 		return details;

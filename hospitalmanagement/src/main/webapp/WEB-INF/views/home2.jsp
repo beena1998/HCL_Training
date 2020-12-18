@@ -7,13 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-Inside Index:
-<a href="enroll">Enroll Patient</a><br>
-<br><br>
-<a href="addPhysician">Add Physician</a>
-<br><br>
-<a href="patientLogin">Patient Login</a>
-<br><br>
-<a href="adminLogin">Admin Login</a>
+<a href="diagnosisDetails">Diagnosis Details of ${patient.firstName}</a><br>
+Your ID is: ${patient.id}
 </body>
 </html>

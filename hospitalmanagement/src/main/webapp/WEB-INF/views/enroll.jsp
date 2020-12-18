@@ -58,8 +58,8 @@
 				</tr>
 				<tr>
 					<td><label for="datepicker">Date of Birth</label></td>
-					<td><form:input path="DOB" id="datepicker" /></td>
-					<td><form:errors path="DOB" cssClass="error"></form:errors></td>
+					<td><form:input path="dob" id="datepicker" /></td>
+					<td><form:errors path="dob" cssClass="error"></form:errors></td>
 
 					<%-- <label for="datepicker">Enter date:</label>
                 <form:input  path="DOj" id="datepicker"/> --%>

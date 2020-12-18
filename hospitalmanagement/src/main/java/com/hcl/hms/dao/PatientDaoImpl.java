@@ -24,9 +24,9 @@ public class PatientDaoImpl implements PatientDao {
 	*/
 	@Override
 	public Patient enrollPatient(Patient patient) {
-		System.out.println("In Dao");
+	
 //		logger.info("Patient Added!! "+patient.getFname());
-//		System.out.println(patient.getFname());
+
 		Session session = sessionFactory.getCurrentSession();
 		session.save(patient);
 		
@@ -65,6 +65,16 @@ public class PatientDaoImpl implements PatientDao {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("From Patient p where p.id=:id");
 		query.setParameter("id", id);
+		Patient result =   (Patient) ((org.hibernate.query.Query) query).uniqueResult();
+		return result;
+	}
+
+	@Override
+	public Patient getPatient(String email, String password) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("From Patient p where p.email=:email and p.password=:password");
+		query.setParameter("email", email);
+		query.setParameter("password", password);
 		Patient result =   (Patient) ((org.hibernate.query.Query) query).uniqueResult();
 		return result;
 	}

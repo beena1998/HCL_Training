@@ -30,10 +30,6 @@ public class PhysicianDaoImpl implements PhysicianDao {
 		query.setParameter("state", state);
 		List<Physician> results = ((org.hibernate.query.Query) query).list();
 
-		for (Physician p : results) {
-			System.out.println("Physician List::" + p);
-		}
-
 		return results;
 	}
 
@@ -44,9 +40,7 @@ public class PhysicianDaoImpl implements PhysicianDao {
 		query.setParameter("plan", plan);
 		List<Physician> results = ((org.hibernate.query.Query) query).list();
 
-		for (Physician p : results) {
-			System.out.println("Physician List::" + p);
-		}
+		
 
 		return results;
 	}
@@ -58,9 +52,7 @@ public class PhysicianDaoImpl implements PhysicianDao {
 		query.setParameter("dept", dept);
 		List<Physician> results = ((org.hibernate.query.Query) query).list();
 
-		for (Physician p : results) {
-			System.out.println("Physician List::" + p);
-		}
+		
 
 		return results;
 	}
@@ -71,10 +63,7 @@ public class PhysicianDaoImpl implements PhysicianDao {
 		Query query = session.createQuery("From Physician");
 		List<Physician> results = ((org.hibernate.query.Query) query).list();
 
-		for (Physician p : results) {
-			System.out.println("Physician List::" + p);
-			System.out.println(p.getId());
-		}
+		
 
 		return results;
 	}

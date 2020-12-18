@@ -122,7 +122,30 @@ public class PatientController {
 		model.addAttribute("details", details);
 		return "patientDetail";
 	}
+	@GetMapping(value="patientLogin")
+	public String Login() {
+		return "patientLogin";
+	}
 	
+	@PostMapping(value="afterPatientLogin")
+	public String patientLogin(@RequestParam("email") String email, @RequestParam("password") String 
+			password, Model model) {
+		
+		Patient patient=patientService.getPatient(email, password);
+		
+		
+		if (patient != null) {
+			model.addAttribute("patient", patient);
+			model.addAttribute("succcessMessage", "Patient succcessfully Login!!");
+			return "home2";
+		} else {
+			String errMessage = "Invalid Credentials";
+			
+			model.addAttribute("error", errMessage);
+			return "patientLogin";
+		}
+				
+	}
 	
 	
 }

@@ -10,5 +10,6 @@ public interface PatientDao {
 	public abstract List<Patient> listPatient(Patient patient);
 	public abstract List<DiagnosisDetails> viewHistory(int patientId);
 	public abstract Patient getPatientById(int id);
+	public abstract Patient getPatient(String email, String password);
 	
 }

@@ -14,4 +14,6 @@ public interface PatientService {
 
 	public abstract Patient getPatientById(int id);
 
+	public abstract Patient getPatient(String email, String password);
+
 }

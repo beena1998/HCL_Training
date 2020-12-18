@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="searchPhysician">Search Physician</a><br>
-<br>
+<a href="searchPhysician">Search Physician</a>
+<br><br>
 <a href="beforeDiagnosis">Enter the Diagnosis Details</a>
-<br>
+<br><br>
 <a href="diagnosisDetails">Diagnosis Details of Patient</a>
 </body>
 </html>
